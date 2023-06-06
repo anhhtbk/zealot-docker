@@ -7,20 +7,20 @@
 set -e
 
 stop_docker_compose () {
-  docker-compose down --rmi local --remove-orphans &> /dev/null
+  docker compose down --rmi local --remove-orphans &> /dev/null
 }
 
 download_docker_images () {
   echo ""
   echo "== Pulling Docker images =="
-  docker-compose pull
+  docker compose pull
   echo "Docker images pulled."
 }
 
 upgrade_database () {
   echo ""
   echo "== Upgrading database =="
-  docker-compose run --rm zealot run_upgrade
+  docker compose run --rm zealot run_upgrade
 }
 
 all_done () {
@@ -29,7 +29,7 @@ all_done () {
   echo ""
   echo "Run the following command get Zealot running:"
   echo ""
-  echo "  docker-compose up -d"
+  echo "  docker compose up -d"
   echo ""
 }
 
